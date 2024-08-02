@@ -1,0 +1,67 @@
+﻿@model gts_ApplicationStartup.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeacherName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+    </dl>
+</div>
+<div>
+    <h4>Students</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.FirstOrDefault().StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.FirstOrDefault().DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.FirstOrDefault().Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.FirstOrDefault().Weight)
+            </th>
+        </tr>
+
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => student.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.Height)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.Weight)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeacherID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
